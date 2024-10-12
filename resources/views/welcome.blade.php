@@ -33,6 +33,13 @@
                                     >
                                         Dashboard
                                     </a>
+                                    <form method="POST" action="/logout">
+                                        @csrf
+                                        <button class="btn-primary 1"
+                                    >
+                                        {{ __('Logout')}}
+                                    </button>
+                                    </form>
                                 @else
                                     <a
                                         href="{{ route('login') }}"

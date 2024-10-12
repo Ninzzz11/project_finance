@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountReceivableController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisteredController;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +19,24 @@ Route::get('/dashboard',function(){
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
-// ACCOUNT RECEIVABLE
-Route::get('/accounts-receivable', function(){
-    return view('accounts-receivable.index');
+// ACCOUNTS RECEIVABLE
+Route::get('/accounts-receivable', [AccountReceivableController::class,'index']);
+Route::get('/accounts-receivable/create', [AccountReceivableController::class,'create']);
+
+
+// ACCOUNTS PAYABLE
+Route::get('/accounts-payable', function(){
+    return view('accounts-payable.index');
+});
+
+// GENERAL LEDGER
+Route::get('/general-ledger', function(){
+    return view('general-ledger.index');
+});
+
+// BUDGET MANAGEMENT
+Route::get('/budget-management', function(){
+    return view('budget-management.index');
 });
 
 

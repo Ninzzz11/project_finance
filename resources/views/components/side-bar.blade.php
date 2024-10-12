@@ -14,7 +14,7 @@
                                     <x-nav-link  href="/dashboard" :active="request()->is('dashboard')" aria-expanded="false"><i class="fa-solid fa-chart-simple"></i>Dashboard</x-nav-link>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/accounts-payable" :active="request()->is('acounts-payable')" aria-expanded="false"><i class="fa-solid fa-money-check-dollar"></i>Accounts Payable</x-nav-link>
+                                    <x-nav-link  href="/accounts-payable" :active="request()->is('accounts-payable')" aria-expanded="false"><i class="fa-solid fa-money-check-dollar"></i>Accounts Payable</x-nav-link>
                                 </li>
                                 <li class="nav-item">
                                     <x-nav-link  href="/accounts-receivable" :active="request()->is('accounts-receivable')" aria-expanded="false"><i class="fa-solid fa-money-bills"></i>Accounts Receivable</x-nav-link>

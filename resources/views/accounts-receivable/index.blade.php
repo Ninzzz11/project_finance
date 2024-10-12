@@ -6,8 +6,8 @@
     <div class="col-xl p-0 m-0">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title border-bottom pb-2 pl-3">INVOICE</h3>
-                <a href="#" class="btn btn-primary1">Create new</a>
+                <h3 class="card-title border-bottom pb-2">INVOICE</h3>
+                <a href="/accounts-receivable/create" class="btn btn-primary1">Create new</a>
                 <x-table-layout/>
             </div>
         </div>

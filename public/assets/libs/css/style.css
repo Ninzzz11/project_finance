@@ -256,6 +256,14 @@ label {
     color: #71748d;
 }
 
+.label1 {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.7rem;
+    color: #71748d;
+}
+
 .form-control {
     display: block;
     width: 100%;
@@ -306,7 +314,7 @@ select.form-control {
     background-image: url(/images/down-arrow.png);
     padding-right: 15px;
     border: 1px solid #d2d2e4;
-    border-radius: 2px;
+    border-radius: 8px;
 }
 
 textarea.form-control {
@@ -6936,6 +6944,7 @@ form.dropzone {
 /*----------------------
 9.2 Vector Map
 ---------------------------*/
+
 
 
 /*-------------------------------------------------------------------

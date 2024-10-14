@@ -20,13 +20,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $clients as $client )
                         <tr>
                             {{-- <td>
                                 <label class="custom-control custom-checkbox">
                                     <input class="custom-control-input checkboxes" type="checkbox" value="1" id="one"><span class="custom-control-label"></span>
                                 </label>
                             </td> --}}
-                            <td>11/11/11</td>
+                            <td>{{ $client->start_date }}</td>
                             <td>12345</td>
                             <td>Helen De Magibaaaaaa</td>
                             <td>100,000</td>
@@ -34,6 +35,7 @@
                             <td>Due on 11/11/12</td>
                             <td>Remind Costumer</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

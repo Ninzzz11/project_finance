@@ -10,13 +10,17 @@ class AccountReceivable extends Model
     /** @use HasFactory<\Database\Factories\AccountReceivableFactory> */
     use HasFactory;
 
+    protected $table = 'account_receivables';
+
     protected $fillable = [
-        'invoice_number',
         'customer',
-        'payment_terms',
-        'amount'
+        'invoice_no',
+        'terms',
+        'start_date',
+        'due_date',
+        'grand_total'
     ];
 
-    
+
 
 }

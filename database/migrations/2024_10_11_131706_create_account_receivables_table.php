@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function Laravel\Prompts\table;
+
 return new class extends Migration
 {
     /**
@@ -13,11 +15,20 @@ return new class extends Migration
     {
         Schema::create('account_receivables', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('invoice_date')->useCurrent();
-            $table->string('invoice_number');
             $table->string('customer');
-            $table->string('payment_terms');
-            $table->integer('amount');
+            $table->string('invoice_no');
+            $table->integer('terms');
+            $table->date('start_date');
+            $table->date('due_date');
+            $table->integer('grand_total');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+
+        });
+
+        Schema::create('invoices', function (Blueprint $table) {
+            $table->id();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

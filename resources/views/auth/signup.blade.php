@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="example123@gmail.com" autocomplete="off" :value="old('email')">
+                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="example123@gmail.com" autocomplete="off" :value="old('email')" autocomplete="on">
                         @error('email')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror

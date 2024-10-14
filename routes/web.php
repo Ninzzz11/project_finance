@@ -5,9 +5,10 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisteredController;
 use Illuminate\Support\Facades\Route;
 
+
 // LOGIN
-Route::get('/',[UserLoginController::class, 'login'])->name('login');
-Route::post('/login', [UserLoginController::class, 'create']);
+Route::get('/',[UserLoginController::class, 'login'])->name('login-session');
+Route::post('/login', [UserLoginController::class, 'create'])->name('login');
 Route::post('/logout',[UserLoginController::class, 'destroy'])->name('logout');
 
 // SIGN UP
@@ -20,8 +21,10 @@ Route::get('/dashboard',function(){
 })->middleware('auth')->name('dashboard');
 
 // ACCOUNTS RECEIVABLE
-Route::get('/accounts-receivable', [AccountReceivableController::class,'index']);
-Route::get('/accounts-receivable/create', [AccountReceivableController::class,'create']);
+Route::get('/accounts-receivable', [AccountReceivableController::class,'index'])->name('ar.index');
+Route::get('/accounts-receivable/invoice', [AccountReceivableController::class,'invoice']);
+Route::post('/ar-create', [AccountReceivableController::class,'create'])->name('ar.create');
+
 
 
 // ACCOUNTS PAYABLE
@@ -38,7 +41,6 @@ Route::get('/general-ledger', function(){
 Route::get('/budget-management', function(){
     return view('budget-management.index');
 });
-
 
 
 

@@ -51,11 +51,11 @@
                 <div class="form-group"></div>
                 <div><span class="splash-header1">Login</span></div>
                 <div><span class="splash-description1">Doesn't have an account? <a href="/signup" class="a-underline">Sign up</a></span></div>
-                <form method="POST" action="/login">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="Email" autocomplete="off" :value="old('email')">
+                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="Email" autocomplete="off" :value="old('email')" autocomplete="on">
                         @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

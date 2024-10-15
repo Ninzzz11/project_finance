@@ -12,15 +12,15 @@ class AccountReceivable extends Model
 
     protected $table = 'account_receivables';
 
-    protected $fillable = [
-        'customer',
-        'invoice_no',
-        'terms',
-        'start_date',
-        'due_date',
-        'grand_total'
-    ];
+    // protected $fillable = [
+    //     'customer',
+    //     'invoice_no',
+    //     'terms',
+    //     'start_date',
+    //     'due_date',
+    //     'grand_total'
+    // ];
 
-
+    protected $guarded = [];
 
 }

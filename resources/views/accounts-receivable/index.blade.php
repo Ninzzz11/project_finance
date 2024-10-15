@@ -3,11 +3,24 @@
         Accounts Receivable
     </x-slot:header>
 
+    @if(session()->has('message'))
+    <div class="col-sm-6">
+        <div id="message" class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="m-0"><i class="fa-solid fa-check-to-slot m-2"></i>{{ session()->get('message') }}</h5>
+            <button type="button" class="close m-0" aria-label="Close" onclick="disposeAlert()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    @endif
+
     <div class="col-xl p-0 m-0">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title border-bottom pb-2">INVOICE</h3>
-                <a href="/accounts-receivable/invoice" class="btn btn-primary1">Create new</a>
+                <h3 class="card-title border-bottom pb-2">INVOICES</h3>
+                    <div class="col-xl p-0 d-flex flex-row-reverse">
+                        <a href="/accounts-receivable/invoice" class="btn btn-primary1">Create new</a>
+                    </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 p-0">
                     <div class="card p-0 my-3">
                         <div class="card-body p-0">
@@ -23,7 +36,7 @@
                                             <th>DATE</th>
                                             <th>INVOICE NO.</th>
                                             <th>CUSTOMER</th>
-                                            <th>PAYMENT TERMS</th>
+                                            <th>TERMS</th>
                                             <th>AMOUNT</th>
                                             <th>STATUS</th>
                                             <th>ACTION</th>
@@ -43,13 +56,18 @@
                                             <td>{{ $client->terms }}</td>
                                             <td>₱ {{ $client->grand_total }}</td>
                                             <td>Due on {{ $client->due_date }}</td>
-                                            <td>Remind Costumer</td>
+                                            <td>
+                                                {{-- anchor tag --}}
+                                                <a href="/accounts-receivable/{{ $client->id }}" class="a-underline">View</a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                {{ $clients->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,6 +76,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('assets/libs/js/invoice_create.js')}}"></script>
 
     {{-- SELECT ALL CHECKBOX --}}
     <script>

@@ -79,3 +79,43 @@ function calculateDueDate() {
         dueDateInput.value = formattedDate;
     }
 }
+
+// NAME DROP DOWN
+const input = document.getElementById('dropdownInput');
+const menu = document.getElementById('dropdownMenu');
+
+input.addEventListener('input', function() {
+    const filter = input.value.toUpperCase();
+    const items = menu.getElementsByClassName('dropdown-item');
+
+    Array.from(items).forEach(item => {
+        if (item.innerText.toUpperCase().indexOf(filter) > -1 || item.tagName === 'A') {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+function toggleDropdown(show) {
+    if (show) {
+        menu.classList.add('show');
+    } else {
+        setTimeout(() => menu.classList.remove('show'), 200);
+    }
+}
+
+function selectItem(item) {
+    input.value = item.innerText;
+    menu.classList.remove('show');
+}
+
+// ALERT DISPLAY
+function disposeAlert() {
+    const alert = document.getElementById('message');
+    alert.classList.remove('show'); // Bootstrap class to fade out
+    alert.classList.add('fade'); // Ensure fade out transition
+    setTimeout(() => {
+        alert.remove();
+    }, 150); // Timeout to allow fade out transition
+}

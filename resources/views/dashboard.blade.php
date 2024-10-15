@@ -115,53 +115,5 @@
 
             </div>
 
-            <div class="row">
-
-                <!-- ============================================================== -->
-                <!-- overdue invoices  -->
-                <!-- ============================================================== -->
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <h5 class="card-header">Disputed vs Overdue Invoices</h5>
-                        <div class="card-body">
-                            <div class="ct-chart-invoice ct-golden-section"></div>
-                            <div class="text-center m-t-40">
-                                <span class="legend-item mr-3">
-                                            <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full "></i></span><span class="legend-text">Disputed Invoices</span>
-                                </span>
-                                <span class="legend-item mr-3">
-                                            <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full "></i></span><span class="legend-text">Overdue Invoices</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- end overdue invoices  -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- disputed invoices  -->
-                <!-- ============================================================== -->
-                <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <h5 class="card-header">Disputed Invoices</h5>
-                        <div class="card-body">
-                            <div class="ct-chart-line-invoice ct-golden-section"></div>
-                            <div class="text-center m-t-10">
-                                <span class="legend-item mr-3">
-                                        <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                <span class="legend-text">Disputed Invoices</span>
-                                </span>
-                                <span class="legend-item mr-3">
-                                        <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                <span class="legend-text">Avarage</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- end disputed invoices  -->
-                <!-- ============================================================== -->
-            </div>
+           
 </x-app-layout>

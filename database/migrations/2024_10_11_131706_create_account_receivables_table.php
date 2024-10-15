@@ -21,14 +21,14 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('due_date');
             $table->integer('grand_total');
+            $table->integer('serviceId');
+            $table->text('description')->nullable();
+            $table->decimal('amount', 10, 2);
+            $table->integer('quantity');
+            $table->decimal('total', 10, 2);
             $table->timestamp('updated_at');
             $table->timestamp('created_at')->useCurrent();
 
-        });
-
-        Schema::create('invoices', function (Blueprint $table) {
-            $table->id();
-            $table->timestamp('created_at')->useCurrent();
         });
     }
 

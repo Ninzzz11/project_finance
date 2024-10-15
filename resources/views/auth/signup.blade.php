@@ -54,14 +54,14 @@
                     @csrf
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input class="form-control form-control-lg" name="username" id="username" type="text" placeholder="Username" autocomplete="off" :value="old('usename')">
+                        <input class="form-control form-control-lg" name="username" id="username" type="text" placeholder="Username" autocomplete="off" value="{{ old('username') }}">
                         @error('username')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="example123@gmail.com" autocomplete="off" :value="old('email')" autocomplete="on">
+                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="example123@gmail.com" autocomplete="off" value="{{ old('email') }}">
                         @error('email')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror

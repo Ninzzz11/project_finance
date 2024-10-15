@@ -55,7 +55,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="Email" autocomplete="off" :value="old('email')" autocomplete="on">
+                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="Email" autocomplete="off" value="{{ old('email') }}">
                         @error('email')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

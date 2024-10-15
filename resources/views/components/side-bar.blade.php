@@ -20,6 +20,9 @@
                                     <x-nav-link  href="/accounts-receivable" :active="request()->is('accounts-receivable')" aria-expanded="false"><i class="fa-solid fa-money-bills"></i>Accounts Receivable</x-nav-link>
                                 </li>
                                 <li class="nav-item">
+                                    <x-nav-link  href="/collection" :active="request()->is('collection')" aria-expanded="false"><i class="fa-solid fa-boxes-stacked"></i>Collection</x-nav-link>
+                                </li>
+                                <li class="nav-item">
                                     <x-nav-link  href="/general-ledger" :active="request()->is('general-ledger')" aria-expanded="false"><i class="fa-solid fa-vault"></i>General Ledger</x-nav-link>
                                 </li>
                                 <li class="nav-item">

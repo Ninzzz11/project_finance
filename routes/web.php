@@ -23,13 +23,22 @@ Route::get('/dashboard',function(){
 // ACCOUNTS RECEIVABLE
 Route::get('/accounts-receivable', [AccountReceivableController::class,'index'])->name('ar.index');
 Route::get('/accounts-receivable/invoice', [AccountReceivableController::class,'invoice']);
-Route::post('/ar-create', [AccountReceivableController::class,'create'])->name('ar.create');
+Route::post('/ar-create', [AccountReceivableController::class, 'store'])->name('ar.store');
+Route::get('/accounts-receivable/{id}', [AccountReceivableController::class,'view']);
+Route::get('/accounts-receivable/edit/{id}', [AccountReceivableController::class,'edit']);
+Route::patch('/accounts-receivable/edit/{id}', [AccountReceivableController::class,'edited']);
+Route::delete('/accounts-receivable/{id}', [AccountReceivableController::class,'delete']);
 
 
 
 // ACCOUNTS PAYABLE
 Route::get('/accounts-payable', function(){
     return view('accounts-payable.index');
+});
+
+// COLLECTION
+Route::get('/collection', function(){
+    return view('collection.index');
 });
 
 // GENERAL LEDGER
@@ -46,5 +55,5 @@ Route::get('/budget-management', function(){
 
 
 Route::get('/select', function(){
-    return view('select');
+    return view('select-layout');
 });

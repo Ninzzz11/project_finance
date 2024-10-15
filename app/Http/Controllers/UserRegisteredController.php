@@ -15,7 +15,7 @@ class UserRegisteredController extends Controller
         // validate
         request()->validate([
             'username'=>['required','min:8'],
-            'email'=>['required'],
+            'email'=>['required','email'],
             'password'=>['required', 'min:8']
         ]);
 

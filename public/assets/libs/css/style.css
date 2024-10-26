@@ -298,7 +298,9 @@ input[type=file] {
 
 input {}
 
-button {}
+button {
+    border: none;
+}
 
 button:focus {
     outline: 0;
@@ -1303,6 +1305,18 @@ Top Header
     padding-right: 24px;
 }
 
+.search-holder {
+    position: relative;
+}
+
+.search-holder i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #666;
+}
 
 /* ------  Notification Dropdown --------  */
 
@@ -2297,7 +2311,9 @@ Pageheader
   2. Dashboard Index-Finance
    ========================================================================== */
 
-.dashboard-finance {}
+.dashboard-finance {
+    background-color: #efeff6;
+}
 
 .dashboard-finance .ct-label {
     display: none;

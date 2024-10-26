@@ -4,15 +4,6 @@
     </x-slot:header>
 
             <div class="row">
-                <div class="offset-xl-10 col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
-                    <form>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="row">
 
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="card border-3 border-top border-top-primary">
@@ -95,6 +86,7 @@
                     <div class="card">
                         <h5 class="card-header">AP Balance</h5>
                         <div class="card-body">
+                            <h1>Charts</h1>
                             <canvas id="chartjs_balance_bar"></canvas>
                         </div>
                     </div>
@@ -104,6 +96,7 @@
                     <div class="card">
                         <h5 class="card-header">AR Balance</h5>
                         <div class="card-body">
+                            <h1>Charts</h1>
                             <canvas id="chartjs_balance_bar"></canvas>
                         </div>
                     </div>
@@ -115,5 +108,5 @@
 
             </div>
 
-           
+
 </x-app-layout>

@@ -18,8 +18,10 @@
 
         {{-- Javascript --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('assets/libs/js/invoice_create.js')}}"></script>
         <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('assets/vendor/dropzone/dropzone.js') }}"></script>
         <!-- slimscroll js -->
         <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
         <!-- dashboard finance js -->
@@ -52,8 +54,6 @@
         <div class="dashboard-wrapper">
             <div class="dashboard-finance">
                 <div class="container-fluid dashboard-content">
-
-
 
 
                 <!-- pageheader  -->

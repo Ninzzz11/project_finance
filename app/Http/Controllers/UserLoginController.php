@@ -19,10 +19,10 @@ class UserLoginController extends Controller
             'password'=>['required']
         ]);
 
-        if(! FacadesAuth::attempt($attributes)){
+        if(!FacadesAuth::attempt($attributes)){
             throw ValidationException::withMessages([
                 'email'=>'Email is not registered.',
-                'password'=>'Wrong password.'
+                // 'password'=>'Wrong password.'
             ]);
         }
 
@@ -36,6 +36,6 @@ class UserLoginController extends Controller
 
         FacadesAuth::logout();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

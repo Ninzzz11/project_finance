@@ -28,6 +28,9 @@
                                 <li class="nav-item">
                                     <x-nav-link  href="/budget-management" :active="request()->is('budget-management')" aria-expanded="false"><i class="fa-solid fa-bars-progress"></i>Budget Management</x-nav-link>
                                 </li>
+                                <li class="nav-item">
+                                    <x-nav-link  href="/payment-reminder" :active="request()->is('payment-reminder')" aria-expanded="false"><i class="fa-solid fa-envelope"></i>Payment Reminder</x-nav-link>
+                                </li>
                             </ul>
                         </div>
                     </li>

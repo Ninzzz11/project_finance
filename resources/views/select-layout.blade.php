@@ -6,6 +6,11 @@
     <title>Custom Dropdown with Input</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        #printableDiv {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
         .dropdown-menu {
             width: 100%;
             max-height: 200px;
@@ -25,6 +30,60 @@
             </div>
         </div>
     </div>
+
+    <div id="printableDiv">
+        <h1>Printable Content</h1>
+        <p>This content will be printed.</p>
+    </div>
+    <button onclick="printDiv()">Print</button>
+
+    <div class="row">
+        <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+
+        </form>
+    </div>
+
+        {{-- SELECT ALL CHECKBOX --}}
+        <script>
+            $(document).ready(function() {
+
+                // binding the check all box to onClick event
+                $(".chk_all").click(function() {
+
+                    var checkAll = $(".chk_all").prop('checked');
+                    if (checkAll) {
+                        $(".checkboxes").prop("checked", true);
+                    } else {
+                        $(".checkboxes").prop("checked", false);
+                    }
+
+                });
+
+                // if all checkboxes are selected, then checked the main checkbox class and vise versa
+                $(".checkboxes").click(function() {
+
+                    if ($(".checkboxes").length == $(".subscheked:checked").length) {
+                        $(".chk_all").attr("checked", "checked");
+                    } else {
+                        $(".chk_all").removeAttr("checked");
+                    }
+
+                });
+
+            });
+        </script>
+
+    <script>
+        function printDiv() {
+            const printContents = document.getElementById('printableDiv').innerHTML;
+            const originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+
 
     <script>
         const input = document.getElementById('dropdownInput');

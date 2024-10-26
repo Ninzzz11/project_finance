@@ -1,60 +1,57 @@
 // // TABLE SECTION
 
-// let rowCount = 0; // Counter for row IDs
+function addRow() {
+    // Get the table body where the rows are added
+    let tableBody = document.getElementById('servicesTableBody');
 
-// function makeEditable(td) {
-//     if (td.querySelector('input')) return; // Prevent duplicate inputs
-//     const originalText = td.textContent;
-//     const input = document.createElement('input');
-//     input.value = originalText;
-//     // input.placeholder = 'Enter value';
-//     // input.classList.add('form-control');
-//     input.className = 'form-control form-control-sm w-50 m-0';
-//     input.onblur = function() {
-//         td.textContent = input.value;
-//     };
-//     td.textContent = '';
-//     td.appendChild(input);
-//     input.focus();
-// }
+    // Get the current number of rows to set the new index
+    let rowCount = tableBody.getElementsByTagName('tr').length;
 
-// function addRow() {
-//     const tableBody = document.getElementById('tableBody');
-//     const newRow = tableBody.insertRow();
+    // Create a new row element
+    let newRow = document.createElement('tr');
 
-//     for (let i = 0; i < 6; i++) {
-//         const newCell = newRow.insertCell(i);
-//         newCell.textContent = '';
-//         if (i === 0) {
-//             newCell.id = `row-${++rowCount}`;
-//             newCell.textContent = `${rowCount}`;
-//         }
-//         newCell.onclick = function() {
-//             makeEditable(newCell);
-//         };
-//     }
-// }
+    // Define the new HTML for the new row, using the incremented rowCount as the index
+    newRow.innerHTML = `
+        <td class="center">
+            <input type="text" name="services[${rowCount}][id]" class="form-control" value="${rowCount + 1}" readonly>
+        </td>
+        <td class="left">
+            <input type="text" name="services[${rowCount}][description]" class="form-control" autocomplete="off" required>
+            <x-error name="services.${rowCount}.description"/>
+        </td>
+        <td class="right">
+            <input type="text" name="services[${rowCount}][amount]" id="amount" class="form-control amount" oninput="calculateResult()" autocomplete="off" required>
+            <x-error name="services.${rowCount}.amount"/>
+        </td>
+        <td class="center">
+            <input type="number" name="services[${rowCount}][quantity]" id="qty" class="form-control quantity" value="1" oninput="calculateResult()" min="1" autocomplete="off" required>
+        </td>
+        <td class="right">
+            <input type="text" name="services[${rowCount}][total]" id="total" class="form-control total" readonly>
+        </td>
+    `;
 
-// window.onload = function() {
-//     const tableBody = document.getElementById('tableBody');
-//     for (let i = 0; i < tableBody.rows.length; i++) {
-//         tableBody.rows[i].cells[0].id = `row-${++rowCount}`;
-//     }
-// }
+    // Append the new row to the table body
+    tableBody.appendChild(newRow);
+}
 
 // AUTO CALCULATIONS
 function calculateResult() {
-const amount = parseFloat(document.getElementById('amount').value) || 0;
-const qty = parseFloat(document.getElementById('qty').value) || 0;
-const amount1 = parseFloat(document.getElementById('amount1').value) || 0;
-const qty1 = parseFloat(document.getElementById('qty1').value) || 0;
+let rows = document.querySelectorAll('#servicesTableBody tr');
+let mainTotal = 0;
 
-const result = amount * qty;
-const result1 = amount1 * qty1;
-const mainTotal = result + result1;
 
-document.getElementById('total').value = result.toFixed(2);
-document.getElementById('total1').value = result1.toFixed(2);
+rows.forEach(function(row){
+    let amount = parseFloat(row.querySelector('.amount').value) || 0;
+    let quantity = parseFloat(row.querySelector('.quantity').value) || 0;
+
+    let result = amount * quantity;
+
+    row.querySelector('.total').value = result.toFixed(2);
+
+    mainTotal += result;
+});
+
 
 document.getElementById('mainTotal').value = mainTotal.toFixed(2);
 
@@ -81,34 +78,34 @@ function calculateDueDate() {
 }
 
 // NAME DROP DOWN
-const input = document.getElementById('dropdownInput');
-const menu = document.getElementById('dropdownMenu');
+// const input = document.getElementById('dropdownInput');
+// const menu = document.getElementById('dropdownMenu');
 
-input.addEventListener('input', function() {
-    const filter = input.value.toUpperCase();
-    const items = menu.getElementsByClassName('dropdown-item');
+// input.addEventListener('input', function() {
+//     const filter = input.value.toUpperCase();
+//     const items = menu.getElementsByClassName('dropdown-item');
 
-    Array.from(items).forEach(item => {
-        if (item.innerText.toUpperCase().indexOf(filter) > -1 || item.tagName === 'A') {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-});
+//     Array.from(items).forEach(item => {
+//         if (item.innerText.toUpperCase().indexOf(filter) > -1 || item.tagName === 'A') {
+//             item.style.display = '';
+//         } else {
+//             item.style.display = 'none';
+//         }
+//     });
+// });
 
-function toggleDropdown(show) {
-    if (show) {
-        menu.classList.add('show');
-    } else {
-        setTimeout(() => menu.classList.remove('show'), 200);
-    }
-}
+// function toggleDropdown(show) {
+//     if (show) {
+//         menu.classList.add('show');
+//     } else {
+//         setTimeout(() => menu.classList.remove('show'), 200);
+//     }
+// }
 
-function selectItem(item) {
-    input.value = item.innerText;
-    menu.classList.remove('show');
-}
+// function selectItem(item) {
+//     input.value = item.innerText;
+//     menu.classList.remove('show');
+// }
 
 // ALERT DISPLAY
 function disposeAlert() {
@@ -119,3 +116,22 @@ function disposeAlert() {
         alert.remove();
     }, 150); // Timeout to allow fade out transition
 }
+
+// MODAL VALIDATION
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();

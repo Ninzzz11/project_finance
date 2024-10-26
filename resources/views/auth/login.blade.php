@@ -51,21 +51,17 @@
                 <div class="form-group"></div>
                 <div><span class="splash-header1">Login</span></div>
                 <div><span class="splash-description1">Doesn't have an account? <a href="/signup" class="a-underline">Sign up</a></span></div>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login-session') }}">
                     @csrf
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="Email" autocomplete="off" value="{{ old('email') }}">
-                        @error('email')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <x-error name="email"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input class="form-control form-control-lg" name="password" id="password" type="password" placeholder="Password">
-                        @error('password')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <x-error name="password"/>
                     </div>
                     <div class="form-group1">
                         <label class="custom-control custom-checkbox">

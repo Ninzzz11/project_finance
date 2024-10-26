@@ -5,24 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice extends Model
+class Accounts extends Model
 {
     use HasFactory;
 
-    protected $table = 'ar_invoices';
+    protected $table = 'ar_accounts';
+    protected $primaryKey = 'id' ;
 
     protected $fillable = [
-        'accounts_id','status', 'terms', 'start_date', 'due_date', 'grand_total',
+        'full_name', 'email', 'contact_no', 'address'
     ];
 
-    public function account()
+    public function invoices()
     {
-        return $this->belongsTo(Accounts::class,'accounts_id');
+        return $this->hasMany(Invoice::class, 'accounts_id');
     }
 
     public function services()
     {
         return $this->hasMany(Service::class);
     }
-
 }

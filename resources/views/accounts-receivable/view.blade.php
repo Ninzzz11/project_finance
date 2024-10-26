@@ -11,22 +11,25 @@
                             <div class="card-header p-4">
                                 <a class="pt-2 d-inline-block" href="#"><h2>Far East Cafe</h2></a>
                                 <div class="float-right">
-                                    <h3 class="mb-0">Invoice #{{ $view->invoice_no }}</h3>
+                                    <h3 class="mb-0">Invoice #{{ $view->id }}</h3>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="row mb-4">
                                     <div class="col-sm-6">
-                                        <h6 class="mb-2">Customer:</h6>
-                                        <h3 class="text-dark mb-1">{{ $view->customer}}</h3>
+                                        <h6 class="mb-2">From:</h6>
+                                        <h3 class="text-dark mb-1">Far East Cafe</h3>
+                                        <div>Bagong Silang Caloocan City</div>
+                                        <div>{{ Auth::User()->email }}</div>
+                                        <div>Phone: +639123456789</div>
                                     </div>
-                                    @if(session()->has('success'))
                                     <div class="col-sm-6">
-                                        <div class="alert alert-success" role="alert">
-                                            <h5><i class="fa-solid fa-check-to-slot"></i>{{ session()->get('success') }}</h5>
-                                        </div>
+                                        <h6 class="mb-2">To:</h6>
+                                        <h3 class="text-dark mb-1" id="full_name">{{ $view->account->full_name }}</h3>
+                                        <div id="customer_address">{{ $view->account->address }}</div>
+                                        <div id="customer_email">{{ $view->account->email }}</div>
+                                        <div id="customer_contact_no">{{ $view->account->contact_no }}</div>
                                     </div>
-                                    @endif
                                 </div>
                                 <div class="row mb-4 p-0">
                                     <div class="col-xl">
@@ -42,6 +45,10 @@
                                             <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
                                                 <label class="label1" for="deuDate">Due date</label>
                                                 <h3 class="text-dark mb-1">{{ $view->due_date }}</h3>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                                                <label class="label1" for="status">Status</label>
+                                                <h3 class="text-dark mb-1">{{ $view->status }}</h3>
                                             </div>
                                         </div>
                                     </div>

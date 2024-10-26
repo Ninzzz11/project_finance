@@ -1,11 +1,49 @@
 <x-app-layout>
     <x-slot:header>
-        Account Receivables
+        Accounts Payable
     </x-slot:header>
 
-        <form method="POST" action="/accounts-receivable/edit/{{ $invoices->id }}">
+        <form action="#" method="POST">
             @csrf
-            @method('PATCH')
+            <div class="modal fade" id="accountsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel">Create new account</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <label for="full_name">Fullname</label>
+                            <input type="text" class="form-control form-control-md"  name="full_name">
+                            <x-error name="full_name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_no">Contact No</label>
+                            <input type="text" class="form-control" id="contact_no" name="contact_no" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Create account</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </form>
+
+        <form action="#" method="POST">
+            @csrf
             <div class="row">
                 <div class="offset-xl-2 col-xl-8">
                     @if(session()->has('message'))
@@ -37,40 +75,42 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <h6 class="mb-2">To:</h6>
-                                    <h3 class="text-dark mb-1" id="full_name">{{ $invoices->account->full_name }}</h3>
-                                    <div id="customer_address">{{ $invoices->account->address }}</div>
-                                    <div id="customer_email">{{ $invoices->account->email }}</div>
-                                    <div id="customer_contact_no">{{ $invoices->account->contact_no }}</div>
+                                    <h3 class="text-dark mb-1" id="full_name"></h3>
+                                    <div id="customer_address"></div>
+                                    <div id="customer_email"></div>
+                                    <div id="customer_contact_no"></div>
                                 </div>
                             </div>
                             <div class="row mb-4 p-0">
                                 <div class="col-xl">
-                                    <h6 class="mb-2">Add Customer</h6>
+                                    <h6 class="mb-2">Add Client/Vendor</h6>
                                     <div class="row d-flex align-items-center">
                                         <div class="col-xl-6 mb-2 pr-2">
-                                            <label class="label1" for="customerSelect">Customer</label>
+                                            <label class="label1" for="customerSelect">Vendor</label>
                                             <div class="dropdown">
-                                                <input type="text" name="customer" class="form-control" id="dropdownInput" onfocus="toggleDropdown(true)" onblur="toggleDropdown(false)" value="{{ $invoices->account->full_name }}" required>
+                                                <input type="text" name="customer" class="form-control" id="dropdownInput" onfocus="toggleDropdown(true)" onblur="toggleDropdown(false)" autocomplete="off" value="{{ old('customer')}}">
                                                 <div class="dropdown-menu m-0" id="dropdownMenu" style="width: 100%;">
-                                                    @foreach($accounts as $account)
-                                                        <span class="dropdown-item" onclick="selectCustomer({{ $account->id }})">{{ $account->full_name }}</span>
-                                                    @endforeach
+                                                    <!-- Modal trigger -->
+                                                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#accountsModal" >Create New Vendor</a>
+                                                    <!-- Dynamically populated customer options -->
+                                                    {{-- @foreach($customers as $customer)
+                                                        <span class="dropdown-item" onclick="selectCustomer({{ $customer->id }})">{{ $customer->full_name }}</span>
+                                                    @endforeach --}}
                                                 </div>
                                             </div>
                                             <x-error name="customer"/>
                                         </div>
                                         <div class="col-sm-1 mb-2 px-0">
                                             <label class="label1 ml-2" for="account_id">ID</label>
-                                            <input type="text" class="form-control px-3" id="accounts_id" name="accounts_id" value="{{ $invoices->account->id }}" readonly>
+                                            <input type="text" class="form-control px-3" id="accounts_id" name="accounts_id" readonly>
                                             <x-error name="account_id"/>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
                                             <label class="label1" for="status">Status</label>
-                                            <select class="form-control form-control-md" id="invoice_no" name="status">
+                                            <select class="form-control form-control-md" id="invoice_no" name="status" readonly>
                                                 <option value="Pending">Open</option>
-                                                <option value="Paid">Paid</option>
                                             </select>
                                             <x-error name="status"/>
                                         </div>
@@ -84,12 +124,12 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
                                             <label class="label1" for="startdate">Invoice date</label>
-                                            <input type="date" name="start_date" class="form-control" id="startDate" onchange="calculateDueDate()" value="{{ $invoices->start_date}}" required>
+                                            <input type="date" name="start_date" class="form-control" id="startDate" onchange="calculateDueDate()">
                                             <x-error name="start_date"/>
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
                                             <label class="label1" for="deuDate">Due date</label>
-                                            <input type="date" name="due_date" class="form-control" id="dueDate" value="{{ $invoices->due_date}}" readonly>
+                                            <input type="date" name="due_date" class="form-control" id="dueDate" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -103,6 +143,7 @@
                                             <th class="right">Unit Cost</th>
                                             <th class="center">Qty</th>
                                             <th class="right">Total</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody id="servicesTableBody">
@@ -114,27 +155,18 @@
                                             <td class="center"><input class="form-control" type="text" value="20"></td>
                                             <td class="right">$22.000,00</td>
                                         </tr> --}}
-                                        @foreach( $invoices->services as $index => $service )
                                         <tr>
-                                            <td>
-                                                <input type="text" name="service_id" id="serviceId" class="form-control" value="{{ $loop->iteration }}">
-                                            </td>
-                                            <td>
-                                                <input type="text" name="services[{{ $index }}][description]"  class="form-control" value="{{ $service->description }}">
-                                                <x-error name="services.{{$index}}.description"/>
-                                            </td>
-                                            <td>
-                                                <input type="text" name="services[{{ $index }}][amount]"  class="form-control amount" value="{{ $service->amount }}" oninput="calculateResult()">
-                                                <x-error name="services.{{$index}}.amount"/>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="services[{{ $index }}][quantity]"  class="form-control quantity" value="{{ $service->quantity }}" oninput="calculateResult()">
-                                            </td>
-                                            <td>
-                                                <input type="number" name="services[{{ $index }}][total]"  class="form-control pr-1 total" value="{{ $service->total }}" readonly>
-                                            </td>
+                                            <td class="center"><input type="text" name="services[0][id]" id="serviceId" class="form-control" value="1" readonly></td>
+                                            <td class="left"><input type="text" name="services[0][description]" id="description" class="form-control">
+                                                <x-error name="services[][description]"/></td>
+                                            <td class="right"><input type="text" name="services[0][amount]" id="amount" class="form-control amount" oninput="calculateResult()">
+                                                <x-error name="services[0][amount]"/></td>
+                                            <td class="center"><input type="number" name="services[0][quantity]" id="qty" class="form-control quantity" value="1" oninput="calculateResult()">
+                                                <x-error name="services[0][quantity]"/></td>
+                                            <td class="right"><input type="text" name="services[0][total]" id="total" class="form-control total" readonly></td>
+                                            <td class="right"><button type="button" onclick="deleteRow(this)"><i class="fa-solid fa-trash"></i></button></td>
+
                                         </tr>
-                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -150,7 +182,7 @@
                                                     <strong class="text-dark">Total</strong>
                                                 </td>
                                                 <td class="right">
-                                                    <input type="number" name="grand_total" id="mainTotal" class="form-control" readonly value="{{ $invoices->grand_total}}">
+                                                    <input type="number" name="grand_total" id="mainTotal" class="form-control" readonly>
                                                 </td>
                                             </tr>
                                             {{-- <tr>
@@ -170,7 +202,7 @@
                                         </tbody>
                                     </table>
                                     <div class="d-flex flex-row-reverse bd-highlight pt-2">
-                                        <a href="/accounts-receivable" class="btn btn-light ml-2">Cancel</a>
+                                        <a href="/accounts-payable" class="btn btn-light ml-2">Cancel</a>
                                         <button class="btn btn-primary" type="submit">Submit</button>
                                     </div>
                                 </div>
@@ -181,10 +213,10 @@
             </div>
         </form>
 
-
         <script src="{{ asset('assets/libs/js/invoice_create.js')}}"></script>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('assets/vendor/datepicker/moment.js')}}"></script>
+        <script src="{{ asset('assets/vendor/datepicker/tempusdominus-bootstrap-4.js')}}"></script>
+        <script src="{{ asset('assets/vendor/datepicker/datepicker.js')}}"></script>
 
         <script type="text/javascript">
             let dropdownVisible = false;
@@ -216,6 +248,10 @@
                     }
                 });
             }
+
+            function remove(){}
         </script>
+
+
 
 </x-app-layout>

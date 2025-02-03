@@ -11,22 +11,25 @@ class UserRegisteredController extends Controller
         return view('auth.signup');
     }
 
-    public function register(){
+    public function register(Request $request){
         // validate
-        request()->validate([
+        $fields = $request->validate([
             'username'=>['required','min:8'],
-            'email'=>['required','email'],
-            'password'=>['required', 'min:8']
+            'email'=>['required','email','unique:users'],
+            'password'=>['required', 'min:3', 'confirmed']
         ]);
+
+        // create
+        User::create($fields);
 
         // attributes
-        User::create([
-            'username'=> request('username'),
-            'email'=> request('email'),
-            'password'=>request('password')
-        ]);
+        // User::create([
+        //     'username'=> request('username'),
+        //     'email'=> request('email'),
+        //     'password'=>request('password')
+        // ]);
 
-        return redirect('/');
+        return redirect('/login');
 
     }
 

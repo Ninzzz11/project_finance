@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name','Finance') }}</title>
+        <title>{{ env('APP_NAME') }}</title>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -18,6 +18,7 @@
 
         {{-- Javascript --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="{{ asset('assets/libs/js/invoice_create.js')}}"></script>
         <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>

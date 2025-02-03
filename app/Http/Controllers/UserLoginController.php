@@ -3,39 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use PDO;
 
 class UserLoginController extends Controller
 {
     public function login(){
+
+        if(Auth::check()){
+            return redirect('/dashboard');
+        }
+
         return view('auth.login');
     }
 
-    public function create(){
-        $attributes = request()->validate([
+    public function create(Request $request){
+        // validate the user
+        $attributes = $request->validate([
             'email'=> ['required','email'],
             'password'=>['required']
         ]);
 
-        if(!FacadesAuth::attempt($attributes)){
+        // login attempt the user
+        if(Auth::attempt($attributes,$request->remember)){
+            $request->session()->regenerate();
+            return redirect()->route('dashboard');
+        }else{
             throw ValidationException::withMessages([
-                'email'=>'Email is not registered.',
-                // 'password'=>'Wrong password.'
+                'failed'=>'Email or password does not match'
             ]);
         }
 
-        request()->session()->regenerate();
-
-        return redirect('/dashboard');
-
     }
 
-    public function destroy(){
+    public function destroy(Request $request){
+        // logout the user
+        Auth::logout();
 
-        FacadesAuth::logout();
+        // invalidate session cookie
+        $request->session()->invalidate();
 
-        return redirect('/login');
+        // generate csrf token
+        $request->session()->regenerateToken();
+
+        // redirect users to login
+        return redirect()->route('login');
     }
 }

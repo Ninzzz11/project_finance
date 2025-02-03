@@ -43,10 +43,10 @@
                             <h5 class="mb-0 text-white nav-user-name ml-2">{{ Auth::User()->username }}</h5>
                             <span class="status"></span><span class="ml-2">Available</span>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="/account-page"><i class="fas fa-user mr-2"></i>Account</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
 
-                        <form method="POST" action="/logout">
+                        <form method="POST" action="{{ route('logout')}}">
                             @csrf
                             <button class="dropdown-item"><i class="fas fa-power-off mr-2"></i>Logout</button>
                         </form>

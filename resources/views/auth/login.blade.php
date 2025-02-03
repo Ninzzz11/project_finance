@@ -55,23 +55,26 @@
                     @csrf
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="Email" autocomplete="off" value="{{ old('email') }}">
+                        <input class="form-control form-control-lg @error('email') border-danger @enderror" name="email" id="email" type="text" placeholder="Email" autocomplete="on" value="{{ old('email') }}">
                         <x-error name="email"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control form-control-lg" name="password" id="password" type="password" placeholder="Password">
+                        <input class="form-control form-control-lg @error('password') border-danger @enderror" name="password" id="password" type="password" placeholder="Password">
                         <x-error name="password"/>
                     </div>
                     <div class="form-group1">
                         <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
+                            <input class="custom-control-input" type="checkbox" name="remember"><span class="custom-control-label">Remember Me</span>
                         </label>
                         <label class="custom-control">
                             <a href="forgot-password.html" class="a-underline"><span>Forgot Password</span></a>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary1 btn-lg btn-block btn-radius">Login</button>
+                    <div class="form-group">
+                        <x-error name="failed"/>
+                    </div>
                 </form>
                 <div class="form-group2">
                     <div class="splash-description mb text-center">or login with</div>

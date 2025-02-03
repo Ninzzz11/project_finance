@@ -3,12 +3,12 @@
         Dashboard
     </x-slot:header>
 
-            <div class="row">
+            <div class="row d-flex flex-sm-nowrap">
 
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="card border-3 border-top border-top-primary">
+                <div class="col-xl-4 px-2">
+                    <div class="card border-3 border-top border-top-primary mb-2">
                         <div class="card-body mb-4">
-                            <h5 class="text-muted">Current Assets</h5>
+                            <h3 class="text-primary">Total Assets</h3>
                             <div class="metric-value d-inline-block">
                                 <h1 class="mb-3">₱ 12,099</h1>
                             </div>
@@ -16,33 +16,27 @@
                                 <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5.86%</span>
                             </div>
                         </div>
-                        <div class="card-footer text-center bg-white">
-                            <a href="#" class="card-link">View Details</a>
-                        </div>
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="card border-3 border-top border-top-primary">
+                <div class="col-xl-4 px-2">
+                    <div class="card border-3 border-top border-top-primary mb-2">
                         <div class="card-body mb-4">
-                            <h5 class="text-muted">Current Assets</h5>
+                            <h3 class="text-success">Net Income</h3>
                             <div class="metric-value d-inline-block">
-                                <h1 class="mb-3">₱ 12,099</h1>
+                                <h1 class="mb-3">₱ 100,342</h1>
                             </div>
                             <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                 <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5.86%</span>
                             </div>
                         </div>
-                        <div class="card-footer text-center bg-white">
-                            <a href="#" class="card-link">View Details</a>
-                        </div>
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="card border-3 border-top border-top-primary">
+                <div class="col-xl-4 px-2">
+                    <div class="card border-3 border-top border-top-primary mb-2">
                         <div class="card-body mb-4">
-                            <h5 class="text-muted">Total Expenses</h5>
+                            <h3 class="text-secondary">Total Expenses</h3>
                             <div class="metric-value d-inline-block">
                                 <h1 class="mb-3">₱ 1,340</h1>
                             </div>
@@ -50,35 +44,186 @@
                                 <span class="icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light "><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">4%</span>
                             </div>
                         </div>
-                        <div class="card-footer text-center bg-white">
-                            <a href="#" class="card-link">View Details</a>
-                        </div>
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="card border-3 border-top border-top-primary">
-                        <div class="card-body mb-4">
-                            <h5 class="text-muted">Current Assets</h5>
-                            <div class="metric-value d-inline-block">
-                                <h1 class="mb-3">₱ 12,099</h1>
-                            </div>
-                            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5.86%</span>
-                            </div>
-                        </div>
-                        <div class="card-footer text-center bg-white">
-                            <a href="#" class="card-link">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
+            </div>
             <!-- ============================================================== -->
             <!-- end revenue year  -->
             <!-- ============================================================== -->
 
+            <!-- ============================================================== -->
+            <!-- profit and loss overview  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-lg-5 p-2">
+                        <div class="card border-3 border-top border-top-primary">
+                            <div class="card-body p-1">
+                                <h3 class="card-header text-center">Profit and Loss overview</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="card-title text-center mb-0 py-2 bg-primary">Last Month</h5>
+                                        <div class="table-responsive-sm">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Category</th>
+                                                        <th scope="col" class="text-end">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Total Income</th>
+                                                        <td>100,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Total Cost of Sales</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Gross Profit</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Total Expenses</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Net Earnings</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="card-title text-center mb-0 py-2 bg-primary">This year to date</h5>
+                                        <div class="table-responsive-sm">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Product</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Product A</td>
+                                                        <td>$10</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Product B</td>
+                                                        <td>$20</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="col-lg-7 p-2">
+                    <div class="card border-3 border-top border-top-primary ">
+                        <div class="card-header">
+                            Income Overview
+                        </div>
+                        <div class="card-body">
+                            <!-- Chart container -->
+                            <canvas id="incomeChart" style="max-height: 265px"></canvas>
+                                <!-- Chart will be rendered here -->
+                                <script>
+                                    document.addEventListener("DOMContentLoaded",()=>{
+                                        new Chart(document.querySelector("#incomeChart"),
+                                        {
+                                        type: 'bar', // Change to desired chart type
+                                        data: {
+                                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                            datasets: [{
+                                                label: 'Income',
+                                                data: [12000, 15000, 8000, 19000, 22000, 18000, 25000], // Sample data
+                                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                                borderColor: 'rgba(54, 162, 235, 1)',
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            }
+                                        }
+                                    });
+                                    })
+                                </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
 
+                <div class="col-lg-5 p-2">
+                    <div class="card">
+                        <div class="card-body p-1">
+                            <h3 class="card-header text-center">Balance sheet overview</h3>
+                            <p class="card-header text-end bg-primary my-0 p-2">Period/Total</p>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Last month</th>
+                                            <th scope="col">Month to date</th>
+                                            <th scope="col">Year to date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Current Assets</th>
+                                            <td>1000</td>
+                                            <td>2000</td>
+                                            <td>3000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Long-term Assets</th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Current Liabilities</th>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Non-current Liabilities</th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Equity</th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
                 <!-- ============================================================== -->
                 <!-- ap and ar balance  -->
                 <!-- ============================================================== -->
@@ -86,8 +231,22 @@
                     <div class="card">
                         <h5 class="card-header">AP Balance</h5>
                         <div class="card-body">
-                            <h1>Charts</h1>
-                            <canvas id="chartjs_balance_bar"></canvas>
+                            <canvas id="barChart" style="max-height: 200px"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded",() => {
+                                    new Chart(document.querySelector("#barChart"),{
+                                        type: 'bar',
+                                        data: {
+                                            labels:['Jan','Feb','Mar','Apr','May'],
+                                            datasets: [{
+                                                label: 'Bar Chart',
+                                                data: [88,100000,22,44,55],
+                                            }]
+                                        }
+                                    }
+                                )
+                                })
+                            </script>
                         </div>
                     </div>
                 </div>

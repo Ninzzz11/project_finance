@@ -2,29 +2,31 @@
 
 use App\Http\Controllers\AccountPayableController;
 use App\Http\Controllers\AccountReceivableController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisteredController;
-use App\Models\AccountPayable;
-use App\Models\AccountReceivable;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', 'login');
 
 // LOGIN
-Route::get('/login',[UserLoginController::class, 'login'])->name('login');
+Route::get('/login',[UserLoginController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/create', [UserLoginController::class, 'create'])->name('login-session');
 Route::post('/logout',[UserLoginController::class, 'destroy'])->name('logout');
 
+
 // SIGN UP
-Route::get('/signup',[UserRegisteredController::class, 'signup']);
-Route::post('/register', [UserRegisteredController::class, 'register']);
+Route::get('/signup',[UserRegisteredController::class, 'signup'])->middleware('guest')->name('signup');
+Route::post('/register', [UserRegisteredController::class, 'register'])->name('register');
+
+
 
 // DASHBOARD
-Route::get('/dashboard',function(){
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
+// ACCOUNTS RECEIVABLE
 Route::middleware('auth')->group(function(){
-    // ACCOUNTS RECEIVABLE
+
     Route::get('/accounts-receivable', [AccountReceivableController::class,'index'])->name('ar.index');
     Route::get('/accounts-receivable/invoice', [AccountReceivableController::class,'invoice']);
     Route::post('/ar-create', [AccountReceivableController::class, 'store'])->name('ar.store');
@@ -38,6 +40,7 @@ Route::middleware('auth')->group(function(){
     Route::delete('/accounts-receivable/account/{id}', [AccountReceivableController::class,'remove']);
     Route::patch('/accounts-receivable/edit/{id}', [AccountReceivableController::class,'edited']);
     Route::delete('/accounts-receivable/{invoice}', [AccountReceivableController::class,'delete']);
+
 });
 
 
@@ -69,7 +72,10 @@ Route::get('/payment-reminder', function(){
     return view('payment-reminder.index');
 });
 
-
+// ACCOUNT PAGE
+Route::get('/account-page', function(){
+    return view('account-page.index');
+});
 
 Route::get('/tester', function(){
     return view('select-layout');

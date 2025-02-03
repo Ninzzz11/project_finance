@@ -247,7 +247,6 @@ class AccountReceivableController extends Controller
     }
 
 
-
     // DELETE THE INVOICE
     public function delete(Invoice $invoice){
         $invoice->delete();

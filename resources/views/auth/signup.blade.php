@@ -49,29 +49,27 @@
             <div class="card-body1">
                 <div class="form-group"></div>
                 <div><span class="splash-header1">Create an account</span></div>
-                <div><span class="splash-description1">Already have an account? <a href="/" class="a-underline">Login</a></span></div>
-                <form method="POST" action="/register">
+                <div><span class="splash-description1">Already have an account? <a href="/login" class="a-underline">Login</a></span></div>
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input class="form-control form-control-lg" name="username" id="username" type="text" placeholder="Username" autocomplete="off" value="{{ old('username') }}">
-                        @error('username')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <input class="form-control form-control-lg @error('username') border-danger @enderror" name="username" id="username" type="text" placeholder="Username" autocomplete="off" value="{{ old('username') }}">
+                        <x-error name="username"/>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input class="form-control form-control-lg" name="email" id="email" type="text" placeholder="example123@gmail.com" autocomplete="off" value="{{ old('email') }}">
-                        @error('email')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <input class="form-control form-control-lg @error('email') border-danger @enderror" name="email" id="email" type="text" placeholder="example123@gmail.com" autocomplete="off" value="{{ old('email') }}">
+                        <x-error name="email"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control form-control-lg" name="password" id="password" type="password" placeholder="Password">
-                        @error('password')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <input class="form-control form-control-lg @error('password') border-danger @enderror" name="password" id="password" type="password" placeholder="Password">
+                        <x-error name="password"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirm Password</label>
+                        <input class="form-control form-control-lg @error('password') border-danger @enderror" name="password_confirmation" id="password" type="password" placeholder="Confirm Password">
                     </div>
                     <button type="submit" class="btn btn-primary1 btn-lg btn-block btn-radius">Sign up</button>
                 </form>

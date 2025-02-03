@@ -39,7 +39,7 @@
                                                 </td> --}}
                                                 <td>03-24-22</td>
                                                 <td>Core1</td>
-                                                <td>payroll</td
+                                                <td>payroll</td>
                                                 <td></td>
                                                 <td>Budget</td>
                                                 <td>6.000</td>

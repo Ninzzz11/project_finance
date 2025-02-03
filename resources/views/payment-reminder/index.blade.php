@@ -3,6 +3,4 @@
         Payment Reminder
     </x-slot:header>
 
-    
-
 </x-app-layout>

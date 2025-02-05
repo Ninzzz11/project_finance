@@ -22,10 +22,11 @@
                                 <div class="list-group">
                                     <a href="#" class="list-group-item list-group-item-action active">
                                         <div class="notification-info">
-                                            <div class="notification-list-user-img"><img src="{{ asset('assets/images/profile.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
+                                            <p>No Notifications</p>
+                                            {{-- <div class="notification-list-user-img"><img src="{{ asset('assets/images/profile.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
                                                 <div class="notification-date">2 min ago</div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </a>
                                 </div>

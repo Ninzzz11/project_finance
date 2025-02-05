@@ -20,7 +20,17 @@
                                     <x-nav-link  href="/accounts-receivable" :active="request()->is('accounts-receivable')" aria-expanded="false"><i class="fa-solid fa-money-bills"></i>Accounts Receivable</x-nav-link>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/collection" :active="request()->is('collection')" aria-expanded="false"><i class="fa-solid fa-boxes-stacked"></i>Collection</x-nav-link>
+                                    <a class="nav-link {{ request()->is('collection') ? 'collapsed' : 'active' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa-solid fa-boxes-stacked"></i>Collection</a>
+                                    <div id="submenu-1" class="submenu collapse">
+                                        <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/collection/payment-records">Payment Records</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Receivables</a>
+                                        </li>
+                                        </ul>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
                                     <x-nav-link  href="/general-ledger" :active="request()->is('general-ledger')" aria-expanded="false"><i class="fa-solid fa-vault"></i>General Ledger</x-nav-link>

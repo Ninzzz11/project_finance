@@ -67,8 +67,8 @@
                                             <table class="table table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Category</th>
-                                                        <th scope="col" class="text-end">Amount</th>
+                                                        <th scope="col" class="ltr">Category</th>
+                                                        <th scope="col" class="rtr">Amount</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -102,21 +102,30 @@
                                             <table class="table table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>Product</th>
-                                                        <th>Price</th>
+                                                        <th scope="col">Category</th>
+                                                        <th scope="col" class="text-end">Amount</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>Product A</td>
-                                                        <td>$10</td>
+                                                        <th>Total Income</th>
+                                                        <td>100,000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>2</td>
-                                                        <td>Product B</td>
-                                                        <td>$20</td>
+                                                        <th>Total Cost of Sales</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Gross Profit</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Total Expenses</th>
+                                                        <td>900,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Net Earnings</th>
+                                                        <td>900,999</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -134,22 +143,43 @@
                         </div>
                         <div class="card-body">
                             <!-- Chart container -->
-                            <canvas id="incomeChart" style="max-height: 265px"></canvas>
+                            <canvas id="incomeChart" style="min-height: 265px"></canvas>
                                 <!-- Chart will be rendered here -->
                                 <script>
                                     document.addEventListener("DOMContentLoaded",()=>{
                                         new Chart(document.querySelector("#incomeChart"),
                                         {
-                                        type: 'bar', // Change to desired chart type
+                                        type: 'line', // Change to desired chart type
                                         data: {
                                             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                                             datasets: [{
-                                                label: 'Income',
+                                                label: 'Paid invoices',
                                                 data: [12000, 15000, 8000, 19000, 22000, 18000, 25000], // Sample data
                                                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                                                 borderColor: 'rgba(54, 162, 235, 1)',
-                                                borderWidth: 1
-                                            }]
+                                                pointRadius: 0,
+                                                pointHoverRadius: 0,
+                                                tension: 0.43
+                                            },
+                                            {
+                                                label: 'Overdue invoices',
+                                                data: [12000, 1300, 8000, 21000, 22000, 2000, 9000], // Sample data
+                                                backgroundColor: 'rgba(244,67,70, 0.2)',
+                                                borderColor: 'rgb(244,67,70)',
+                                                pointRadius: 0,
+                                                pointHoverRadius: 0,
+                                                tension: 0.43
+                                            },
+                                            {
+                                                label: 'Open invoices',
+                                                data: [1000, 1300, 8000, 2300, 0, 1200, 2000], // Sample data
+                                                backgroundColor: 'rgba(243,47,221, 0.2)',
+                                                borderColor: 'rgba(243,47,221,1)',
+                                                pointRadius: 0,
+                                                pointHoverRadius: 0,
+                                                tension: 0.43
+                                            }
+                                        ]
                                         },
                                         options: {
                                             scales: {

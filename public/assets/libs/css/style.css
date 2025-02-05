@@ -319,6 +319,16 @@ select.form-control {
     border-radius: 8px;
 }
 
+.rtr {
+    padding: 0;
+    text-align: end;
+}
+
+.ltr {
+    padding: 0;
+    text-align: start;
+}
+
 textarea.form-control {
     height: auto;
     color: #71748d;

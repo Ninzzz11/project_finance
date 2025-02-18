@@ -11,10 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('account_payables', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::dropIfExists('account_payables');
     }
 
     /**
@@ -22,6 +19,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('account_payables');
+        Schema::create('account_payables', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
     }
 };

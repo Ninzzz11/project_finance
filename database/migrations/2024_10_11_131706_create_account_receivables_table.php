@@ -13,6 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('account_receivables');
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
         Schema::create('account_receivables', function (Blueprint $table) {
             $table->id();
             $table->string('customer');
@@ -30,13 +38,5 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
 
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('account_receivables');
     }
 };

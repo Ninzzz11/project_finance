@@ -14,6 +14,18 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('ar_services');
+        Schema::dropIfExists('ar_invoices');
+        Schema::dropIfExists('ar_accounts');
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
         Schema::create('ar_accounts', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
@@ -45,17 +57,5 @@ class CreateInvoicesTable extends Migration
             $table->decimal('total', 10, 2);
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('ar_services');
-        Schema::dropIfExists('ar_invoices');
-        Schema::dropIfExists('ar_accounts');
     }
 }

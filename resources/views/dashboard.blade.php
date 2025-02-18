@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot:head>
+        Dashboard
+    </x-slot:head>
     <x-slot:header>
         Dashboard
     </x-slot:header>
@@ -38,7 +41,7 @@
                         <div class="card-body mb-4">
                             <h3 class="text-secondary">Total Expenses</h3>
                             <div class="metric-value d-inline-block">
-                                <h1 class="mb-3">₱ 1,340</h1>
+                                <h1 class="mb-3">₱ 12,342</h1>
                             </div>
                             <div class="metric-label d-inline-block float-right text-danger font-weight-bold">
                                 <span class="icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light "><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">4%</span>
@@ -46,6 +49,8 @@
                         </div>
                     </div>
                 </div>
+
+
 
             </div>
             <!-- ============================================================== -->
@@ -228,6 +233,7 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">Current Liabilities</th>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                         </tr>

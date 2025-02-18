@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountPayableController;
 use App\Http\Controllers\AccountReceivableController;
+use App\Http\Controllers\Collections;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisteredController;
@@ -53,8 +54,9 @@ Route::middleware('auth')->group(function(){
 });
 
 // COLLECTION
-Route::get('/collection', function(){
-    return view('collection.index');
+Route::middleware('auth')->group(function(){
+    Route::get('/collection/payment-records', [Collections::class,'prIndex'])->name('payment-records');
+    Route::get('/collection/payment-collection', [Collections::class,'pcIndex'])->name('payment-collection');
 });
 
 // GENERAL LEDGER

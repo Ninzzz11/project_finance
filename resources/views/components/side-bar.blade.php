@@ -11,35 +11,40 @@
                                     Menu
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/dashboard" :active="request()->is('dashboard')" aria-expanded="false"><i class="fa-solid fa-chart-simple"></i>Dashboard</x-nav-link>
+                                    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa-solid fa-chart-simple"></i>Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/accounts-payable" :active="request()->is('accounts-payable')" aria-expanded="false"><i class="fa-solid fa-money-check-dollar"></i>Accounts Payable</x-nav-link>
+                                    <a class="nav-link" href="/accounts-payable" :active="request()->is('accounts-payable')" aria-expanded="false"><i class="fa-solid fa-money-check-dollar"></i>Accounts Payable</a>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/accounts-receivable" :active="request()->is('accounts-receivable')" aria-expanded="false"><i class="fa-solid fa-money-bills"></i>Accounts Receivable</x-nav-link>
+                                    <a class="nav-link" href="/accounts-receivable" :active="request()->is('accounts-receivable')" aria-expanded="false"><i class="fa-solid fa-money-bills"></i>Accounts Receivable</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {{ request()->is('collection') ? 'collapsed' : 'active' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa-solid fa-boxes-stacked"></i>Collection</a>
-                                    <div id="submenu-1" class="submenu collapse">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ Request::is('collection*') ? 'active' : '' }}" href="#" role="button" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3" data-bs-toggle="dropdown">
+                                        <i class="fa-solid fa-boxes-stacked"></i> Collection
+                                    </a>
+                                    <x-sub-menu :active="Request::is('collectio*')" id="submenu-3">
                                         <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/collection/payment-records">Payment Records</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Receivables</a>
-                                        </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link {{ Request::is('collection/payment-collection') ? 'active' : '' }}" href="{{ route('payment-collection') }}">Payment Collection</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link {{ Request::is('collection/payment-records') ? 'active' : '' }}" href="{{ route('payment-records') }}">Payment Records</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link">Payment Reminder</a>
+                                            </li>
                                         </ul>
-                                    </div>
+                                    </x-sub-menu>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/general-ledger" :active="request()->is('general-ledger')" aria-expanded="false"><i class="fa-solid fa-vault"></i>General Ledger</x-nav-link>
+                                    <a class="nav-link" href="/general-ledger" :active="request()->is('general-ledger')" aria-expanded="false"><i class="fa-solid fa-vault"></i>General Ledger</a>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/budget-management" :active="request()->is('budget-management')" aria-expanded="false"><i class="fa-solid fa-bars-progress"></i>Budget Management</x-nav-link>
+                                    <a class="nav-link" href="/budget-management" :active="request()->is('budget-management')" aria-expanded="false"><i class="fa-solid fa-bars-progress"></i>Budget Management</a>
                                 </li>
                                 <li class="nav-item">
-                                    <x-nav-link  href="/payment-reminder" :active="request()->is('payment-reminder')" aria-expanded="false"><i class="fa-solid fa-envelope"></i>Payment Reminder</x-nav-link>
+                                    <a class="nav-link" href="/payment-reminder" :active="request()->is('payment-reminder')" aria-expanded="false"><i class="fa-solid fa-envelope"></i>Payment Reminder</a>
                                 </li>
                             </ul>
                         </div>

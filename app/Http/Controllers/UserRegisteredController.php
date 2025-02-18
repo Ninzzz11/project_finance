@@ -12,6 +12,7 @@ class UserRegisteredController extends Controller
     }
 
     public function register(Request $request){
+        
         // validate
         $fields = $request->validate([
             'username'=>['required','min:8'],
@@ -22,13 +23,7 @@ class UserRegisteredController extends Controller
         // create
         User::create($fields);
 
-        // attributes
-        // User::create([
-        //     'username'=> request('username'),
-        //     'email'=> request('email'),
-        //     'password'=>request('password')
-        // ]);
-
+        // redirect
         return redirect('/login');
 
     }
